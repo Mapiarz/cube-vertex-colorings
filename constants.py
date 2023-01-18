@@ -1,7 +1,6 @@
-from typing import List, Tuple
+from aliases import VerticePermutation
 
-
-OCTAHEDRON_ROTATIONAL_SYMMETRIES: List[Tuple[int, int, int, int, int, int, int, int]] = [
+OCTAHEDRON_ROTATIONAL_SYMMETRIES: list[VerticePermutation] = [
 
     # Identity
     (0, 1, 2, 3, 4, 5, 6, 7),
