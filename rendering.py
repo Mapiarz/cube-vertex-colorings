@@ -44,7 +44,7 @@ def render_basic(orbit: VerticePermutation, filename_suffix: str) -> None:
         f.write(povray_code)
 
     # Render the image
-    image_size = '1024'
+    image_size = '512'
     image_name = f'renders/orbit_{filename_suffix}.png'
     command = f'povray {temp_filename} Height={image_size} Width={image_size} +ua +fn +O{image_name}'
     system(command)
