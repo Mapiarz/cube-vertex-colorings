@@ -5,10 +5,10 @@ global_settings { assumed_gamma 1.0 }
 #include "colors.inc"
 
 // Camera, lights, sky
-#declare CameraPosition = <12, 10, -16>;
+#declare CameraPosition = <9, 9, -7>;
 camera{
     location CameraPosition
-    look_at  <4, 4, 0>
+    look_at  <3, 2, 4>
 }
 
 light_source{ <-200, 300, -150> color White * 0.9 shadowless}
