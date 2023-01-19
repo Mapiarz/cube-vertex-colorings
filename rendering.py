@@ -1,15 +1,31 @@
 from os import remove, system
 from string import Template
+from typing import NamedTuple
 
 from aliases import VerticePermutation
 
 
+class Color(NamedTuple):
+    red: float
+    green: float
+    blue: float
+    alpha: float
+
+
+COLOR_MAP: dict[int, Color] = {
+    0: Color(0.9, 0.9, 0.9, 0.9),
+    1: Color(1, 0, 0, 0.25),
+    2: Color(0, 1, 0, 0.25),
+    3: Color(0, 0, 1, 0.25),
+}
+
+
 def get_template_context(coloring: VerticePermutation) -> dict[str, str]:
-    coloring = tuple(reversed(coloring))
+    rgba_coloring = tuple(COLOR_MAP[color] for color in reversed(coloring))
     return {
-        f'color{i}': "pigment{ color rgbt<1, 0, 0, 0.25> }" if color else "pigment{ color rgbt<0.9, 0.9, 0.9, 0.9> }"
+        f'color{i}': f"pigment{{ color rgbt<{color.red}, {color.green}, {color.blue}, {color.alpha}> }}"
         for i, color 
-        in enumerate(coloring, start=1)
+        in enumerate(rgba_coloring, start=1)
     }
 
 def render_basic(orbit: VerticePermutation, filename_suffix: str) -> None:
